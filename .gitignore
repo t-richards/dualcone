@@ -1,0 +1,22 @@
+# Temporary junk
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+*.bundle
+
+# Build results
+*.so
+*.o
+*.a
+mkmf.log
+
+# Don't need this for gems
+Gemfile.lock
+
+# Core dumps :grimacing:
+core.*

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+set -vx
+
+cd "$(dirname "$0")/../vendor/libhydrogen"
+
+git fetch origin
+git pull --rebase --autostash origin/master

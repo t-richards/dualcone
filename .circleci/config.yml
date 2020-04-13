@@ -1,0 +1,46 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: alpine:edge
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+    steps:
+      - run:
+          name: Add system deps
+          command: apk add --update --no-cache git openssh-client binutils gcc make ruby ruby-bundler ruby-json musl-dev libc-dev ruby-dev
+      - checkout
+      - run:
+          name: Ruby version
+          command: ruby --version
+      - run:
+          name: Bundler version
+          command: bundle --version
+      - restore_cache:
+          keys:
+            - ruby-deps-v1-{{ checksum "dualcone.gemspec" }}
+            - ruby-deps-v1-
+      - run:
+          name: Add ruby deps
+          command: bundle check || bundle install
+      - save_cache:
+          key: ruby-deps-v1-{{ checksum "dualcone.gemspec" }}
+          paths:
+            - vendor/bundle
+      - run:
+          name: Fetch git submodules
+          command: git submodule update --init
+      - run:
+          name: Build native extensions
+          command: bin/rake compile
+      - run:
+          name: Run gem specs
+          command: bin/rspec
+      - run:
+          name: Lint ruby code
+          command: bin/rubocop -a
+      - run:
+          name: Build gem and inspect contents
+          command: bin/rake inspect

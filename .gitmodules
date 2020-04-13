@@ -1,0 +1,4 @@
+[submodule "vendor/libhydrogen"]
+	path = vendor/libhydrogen
+	url = https://github.com/jedisct1/libhydrogen.git
+	ignore = dirty

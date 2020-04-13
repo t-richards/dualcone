@@ -1,0 +1,15 @@
+AllCops:
+  Exclude:
+    - bin/rake
+    - bin/rspec
+    - bin/rubocop
+    - "vendor/**/*"
+
+Metrics/BlockLength:
+  Exclude:
+    - dualcone.gemspec
+    - "spec/**/*"
+
+Style/GlobalVars:
+  Exclude:
+    - "ext/**/*"
