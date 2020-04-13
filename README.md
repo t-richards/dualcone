@@ -17,7 +17,7 @@ Dualcone supports GNU + Linux and other Unix-like operating systems. Windows is 
  - [x] Specs passing
 
 ### Part 2
- - [ ] Runnable trivial ruby script
+ - [x] Runnable trivial ruby script
  - [ ] Runnable non-trivial ruby script
  - [ ] Runnable sinatra app
  - [ ] Runnable rails app
