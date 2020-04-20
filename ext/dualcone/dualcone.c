@@ -134,10 +134,12 @@ VALUE rb_dualcone_generate_key(VALUE _self) {
 VALUE rb_dualcone_encrypt(VALUE _self, VALUE path) {
   int result = 0;
   int errno_sv = 0;
-  DualconeContext ctx = {0};
+
+  /* Check args */
   rb_check_type(path, T_STRING);
 
-  /* Get key */
+  /* Dualcone private memory allocations */
+  DualconeContext ctx = {0};
   rb_dualcone_get_key(&ctx);
 
   /* The path of the input file (ruby code, plaintext) */
@@ -208,7 +210,7 @@ VALUE rb_dualcone_encrypt(VALUE _self, VALUE path) {
   /* Allocate memory for encryption result */
   ctx.ciphertext_len = hydro_secretbox_HEADERBYTES + ctx.plaintext_len;
   ctx.ciphertext = calloc(1, ctx.ciphertext_len);
-  if (ctx.ciphertext == NULL) {
+  if (RB_UNLIKELY(ctx.ciphertext == NULL)) {
     errno_sv = errno;
     rb_dualcone_cleanup(&ctx);
     rb_raise(rb_eFatal, "unable to allocate memory for encryption: %s", strerror(errno_sv));
