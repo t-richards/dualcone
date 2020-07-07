@@ -90,7 +90,7 @@ VALUE rb_dualcone_run(VALUE _self, VALUE code) {
   }
 
   /* Allocate memory for plaintext */
-  ctx.plaintext_len = ctx.ciphertext_len - hydro_secretbox_HEADERBYTES; // TODO(tom): Null byte here
+  ctx.plaintext_len = ctx.ciphertext_len - hydro_secretbox_HEADERBYTES + 1; // Null byte
   ctx.plaintext = calloc(1, ctx.plaintext_len);
   if (RB_UNLIKELY(ctx.plaintext == NULL)) {
     errno_sv = errno;
