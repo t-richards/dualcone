@@ -16,9 +16,7 @@ end
 
 LIBHYDROGEN_DIR = File.join(__dir__, '..', '..', 'vendor', 'libhydrogen')
 
-unless find_executable('make')
-  abort 'ERROR: make is required to build libhydrogen.'
-end
+abort 'ERROR: make is required to build libhydrogen.' unless find_executable('make')
 
 append_cflags(cflags)
 
@@ -33,8 +31,6 @@ Dir.chdir(LIBHYDROGEN_DIR) do
   dir_config('hydrogen', "#{LIBHYDROGEN_DIR}/include", "#{LIBHYDROGEN_DIR}/lib")
 end
 
-unless have_library('hydrogen') && have_header('hydrogen.h')
-  abort 'ERROR: Failed to build libhydrogen.'
-end
+abort 'ERROR: Failed to build libhydrogen.' unless have_library('hydrogen') && have_header('hydrogen.h')
 
 create_makefile('dualcone/dualcone')

@@ -90,7 +90,7 @@ RSpec.describe Dualcone do
 
       it 'evaluates the code' do
         ClimateControl.modify DUALCONE_HEX_KEY: key do
-          Dualcone.run(code)
+          described_class.run(code)
         end
 
         expect(TEST_SUCCESS).to eq(true)

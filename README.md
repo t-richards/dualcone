@@ -97,6 +97,7 @@ You need to have a C compiler and `make` installed on your system to be able to 
 2. `bin/setup` to install dependencies and fetch git submodules.
 3. `bin/rake compile` to build the gem's native extensions.
 4. `bin/rspec` to run the tests.
+5. `bin/rubocop` to check code style.
 
 You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
