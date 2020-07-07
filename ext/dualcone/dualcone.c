@@ -99,6 +99,7 @@ VALUE rb_dualcone_run(VALUE _self, VALUE code) {
   }
 
   /* Decrypt binary code to plaintext code */
+  /* TODO(tom): Fix off-by-one error in encrypt? Null byte is not always present at end of string. */
   result = hydro_secretbox_decrypt(ctx.plaintext, ctx.ciphertext, ctx.ciphertext_len, 0, DUALCONE_CONTEXT, ctx.binary_key);
   if (result == -1) {
     rb_dualcone_cleanup(&ctx);
