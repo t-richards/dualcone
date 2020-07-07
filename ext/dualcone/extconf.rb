@@ -24,7 +24,7 @@ append_cflags(cflags)
 Dir.chdir(LIBHYDROGEN_DIR) do
   system('make clean')
   system("export CFLAGS='#{cflags.join(' ')}'; make")
-  system('make lib')
+  system('PREFIX=. make install')
 
   # Ensure that our bundled version of libhydrogen is always used
   $DEFLIBPATH.unshift("#{LIBHYDROGEN_DIR}/lib")
