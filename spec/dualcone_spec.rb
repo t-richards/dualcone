@@ -95,6 +95,22 @@ RSpec.describe Dualcone do
 
         expect(TEST_SUCCESS).to eq(true)
       end
+
+      context 'multiple runs to check for uninitialized memory' do
+        let(:other_code) do
+          <<~CODE.strip
+            ca3cba5d065e37c8e2eaeb95c6000b9faaf15dcc24f6ca6c81ed62e73fd8cced21a08b336e11bbb7ce9d088add8c4edf0c2663
+          CODE
+        end
+
+        64.times do |i|
+          it "evaluates the code (try #{i})" do
+            ClimateControl.modify DUALCONE_HEX_KEY: key do
+              described_class.run(other_code)
+            end
+          end
+        end
+      end
     end
   end
 

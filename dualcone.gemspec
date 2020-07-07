@@ -23,7 +23,6 @@ Gem::Specification.new do |spec|
   spec.files += Dir.glob('vendor/libhydrogen/{LICENSE,Makefile,README.md}')
   spec.files += Dir.glob('vendor/libhydrogen/*.[c,h]')
   spec.files += Dir.glob('vendor/libhydrogen/impl/**/*')
-  spec.files += Dir.glob('vendor/libhydrogen/tests/*.c')
   spec.extra_rdoc_files = %w[README.md LICENSE.txt]
   spec.require_paths = ['lib']
   spec.extensions    = ['ext/dualcone/extconf.rb']

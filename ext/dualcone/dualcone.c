@@ -90,7 +90,7 @@ VALUE rb_dualcone_run(VALUE _self, VALUE code) {
   }
 
   /* Allocate memory for plaintext */
-  ctx.plaintext_len = ctx.ciphertext_len - hydro_secretbox_HEADERBYTES;
+  ctx.plaintext_len = ctx.ciphertext_len - hydro_secretbox_HEADERBYTES; // TODO(tom): Null byte here
   ctx.plaintext = calloc(1, ctx.plaintext_len);
   if (RB_UNLIKELY(ctx.plaintext == NULL)) {
     errno_sv = errno;
@@ -99,7 +99,6 @@ VALUE rb_dualcone_run(VALUE _self, VALUE code) {
   }
 
   /* Decrypt binary code to plaintext code */
-  /* TODO(tom): Fix off-by-one error in encrypt? Null byte is not always present at end of string. */
   result = hydro_secretbox_decrypt(ctx.plaintext, ctx.ciphertext, ctx.ciphertext_len, 0, DUALCONE_CONTEXT, ctx.binary_key);
   if (result == -1) {
     rb_dualcone_cleanup(&ctx);

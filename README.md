@@ -82,7 +82,7 @@ You need to have a C compiler and `make` installed on your system to be able to 
 
     ```ruby
     require 'dualcone'
-    Dualcone.run('ENCRYPTED CODE HERE')
+    Dualcone.run('7f1a1b6a047aee2403e415044b72f2ac2997cef689960df46afdfe6d7c657e18dbae1bea3bbe33ae9157cb2f7b22f34db69b2eb41e05aa512151')
     ```
 
 4. Finally, test your encrypted code by running it.
