@@ -64,12 +64,12 @@ VALUE rb_dualcone_run(VALUE _self, VALUE code) {
 
   /* Encrypted ruby code (hex-encoded) */
   char *hex_code = StringValuePtr(code);
-  int hex_code_len = RSTRING_LEN(code);
+  long hex_code_len = RSTRING_LEN(code);
 
   /* Check message length */
   if (hex_code_len < DUALCONE_MIN_HEX_LEN) {
     rb_dualcone_cleanup(&ctx);
-    rb_raise(rb_eFatal, "unable to run code: too short (got %d chars, expected at least %d chars)", hex_code_len, DUALCONE_MIN_HEX_LEN);
+    rb_raise(rb_eFatal, "unable to run code: too short (got %ld chars, expected at least %d chars)", hex_code_len, DUALCONE_MIN_HEX_LEN);
   }
 
   /* Allocate memory for ciphertext */
