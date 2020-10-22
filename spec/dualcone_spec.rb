@@ -47,7 +47,7 @@ RSpec.describe Dualcone do
 
     context 'without valid hex-encoded data' do
       it 'raises a fatal error' do
-        code = fake_header + 'zz'
+        code = "#{fake_header}zz"
 
         ClimateControl.modify DUALCONE_HEX_KEY: key do
           expect do
@@ -71,7 +71,7 @@ RSpec.describe Dualcone do
 
     context 'without a valid encrypted message' do
       it 'raises a fatal error' do
-        code = SecureRandom.hex(64) + 'aa'
+        code = "#{SecureRandom.hex(64)}aa"
 
         ClimateControl.modify DUALCONE_HEX_KEY: key do
           expect do
