@@ -8,8 +8,8 @@ RSpec.describe Dualcone do
   end
   let(:fake_header) { SecureRandom.hex(36) }
 
-  context '.run' do
-    context 'given a non-string argument' do
+  describe '.run' do
+    context 'when given a non-string argument' do
       args = [
         nil,
         Object.new,
@@ -95,26 +95,26 @@ RSpec.describe Dualcone do
 
         expect(TEST_SUCCESS).to eq(true)
       end
+    end
 
-      context 'multiple runs to check for uninitialized memory' do
-        let(:other_code) do
-          <<~CODE.strip
-            ca3cba5d065e37c8e2eaeb95c6000b9faaf15dcc24f6ca6c81ed62e73fd8cced21a08b336e11bbb7ce9d088add8c4edf0c2663
-          CODE
-        end
+    context 'when running multiple times to check for uninitialized memory' do
+      let(:other_code) do
+        <<~CODE.strip
+          ca3cba5d065e37c8e2eaeb95c6000b9faaf15dcc24f6ca6c81ed62e73fd8cced21a08b336e11bbb7ce9d088add8c4edf0c2663
+        CODE
+      end
 
-        64.times do |i|
-          it "evaluates the code (try #{i})" do
-            ClimateControl.modify DUALCONE_HEX_KEY: key do
-              described_class.run(other_code)
-            end
+      64.times do |i|
+        it "successfully evaluates the code (try #{i})" do
+          ClimateControl.modify DUALCONE_HEX_KEY: key do
+            described_class.run(other_code)
           end
         end
       end
     end
   end
 
-  context '.encrypt' do
+  describe '.encrypt' do
     context 'without an encryption key' do
       it 'raises a KeyError' do
         file = Tempfile.new
@@ -156,13 +156,13 @@ RSpec.describe Dualcone do
           described_class.encrypt(file.path)
           result = File.read(file.path)
 
-          expect(result).to_not include("\u0000")
+          expect(result).not_to include("\u0000")
         end
       end
     end
   end
 
-  context '.generate_key' do
+  describe '.generate_key' do
     it 'generates a key' do
       result = described_class.generate_key
 

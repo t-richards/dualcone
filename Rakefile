@@ -1,11 +1,5 @@
 # frozen_string_literal: true
 
-# Disable warnings that don't belong to us
-require 'warning'
-Gem.path.each do |path|
-  Warning.ignore(//, path)
-end
-
 require 'bundler/gem_tasks'
 
 require 'rspec/core/rake_task'
@@ -24,6 +18,7 @@ end
 
 require 'rake/extensiontask'
 
+desc 'Build native extension'
 task build: :compile
 
 Rake::ExtensionTask.new('dualcone') do |ext|
