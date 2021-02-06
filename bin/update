@@ -3,7 +3,8 @@ set -euo pipefail
 IFS=$'\n\t'
 set -vx
 
-cd "$(dirname "$0")/../vendor/libhydrogen"
-
+git submodule update --init
+cd vendor/libhydrogen
 git fetch origin
-git pull --rebase --autostash origin/master
+git pull --rebase --autostash origin master
+git checkout master
