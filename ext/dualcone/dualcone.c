@@ -51,7 +51,17 @@ void rb_dualcone_get_key(DualconeContext *ctx) {
   }
 }
 
-VALUE rb_dualcone_run(VALUE _self, VALUE code) {
+/*
+ * call-seq:
+ *   Dualcone.run(path) -> nil
+ *
+ * Runs the encrypted file specified by +path+.
+ *
+ * If successful, this method returns nil.
+ * Otherwise, it raises a fatal error.
+ */
+static VALUE
+rb_dualcone_run(VALUE _self, VALUE code) {
   int result = 0;
   int errno_sv = 0;
 
@@ -117,7 +127,14 @@ VALUE rb_dualcone_run(VALUE _self, VALUE code) {
   return Qnil;
 }
 
-VALUE rb_dualcone_generate_key(VALUE _self) {
+/*
+ * call-seq:
+ *   Dualcone.generate_key -> string
+ *
+ * Returns a new secret encryption key in hex-encoded format.
+ */
+static VALUE
+rb_dualcone_generate_key(VALUE _self) {
   uint8_t key[hydro_secretbox_KEYBYTES];
   char hex[hydro_secretbox_KEYBYTES * 2 + 1];
 
@@ -131,7 +148,17 @@ VALUE rb_dualcone_generate_key(VALUE _self) {
   return rb_str_new_cstr(hex);
 }
 
-VALUE rb_dualcone_encrypt(VALUE _self, VALUE path) {
+/*
+ * call-seq:
+ *   Dualcone.encrypt(path) -> nil
+ *
+ * Encrypts (and overwrites!) the file specified by +path+.
+ *
+ * If successful, this method returns nil.
+ * Otherwise, it raises a fatal error.
+ */
+static VALUE
+rb_dualcone_encrypt(VALUE _self, VALUE path) {
   int result = 0;
   int errno_sv = 0;
 

@@ -163,11 +163,12 @@ RSpec.describe Dualcone do
   end
 
   describe '.generate_key' do
-    it 'generates a key' do
+    it 'generates a hex-encoded secret key' do
       result = described_class.generate_key
 
       expect(result).to be_a(String)
       expect(result.length).to eq(64)
+      expect(result).to match(/^[a-f0-9]+$/)
     end
   end
 end

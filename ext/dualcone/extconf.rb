@@ -2,6 +2,8 @@
 
 require 'mkmf'
 
+# :stopdoc:
+
 cflags = %w[
   -march=native -fno-exceptions -pipe
   -fstack-protector-strong -fPIC -Wall -Werror
