@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'A Ruby source code protection system.'
   spec.description   = 'Dualcone encrypts your Ruby source code.'
   spec.homepage      = 'https://github.com/t-richards/dualcone'
-  spec.license       = 'MIT'
+  spec.license       = 'ISC'
   spec.required_ruby_version = Gem::Requirement.new('>= 2.5.0')
 
   spec.metadata['homepage_uri'] = spec.homepage

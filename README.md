@@ -109,8 +109,8 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/t-rich
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License][mit-license].
+The gem is available as open source under the terms of the [ISC License][isc-license].
 
 [libhydrogen]: https://github.com/jedisct1/libhydrogen
-[mit-license]: https://opensource.org/licenses/MIT
+[isc-license]: LICENSE.txt
 [rubygems]: https://rubygems.org

@@ -5,15 +5,14 @@ require 'mkmf'
 # :stopdoc:
 
 cflags = %w[
-  -march=native -fno-exceptions -pipe
-  -fstack-protector-strong -fPIC -Wall -Werror
-  -Wno-missing-braces
+  -march=native -mtune=generic -pipe -fno-plt
+  -fstack-protector-strong -fPIC
 ]
 
 if ENV['DEBUG']
   cflags.unshift('-O0', '-g')
 else
-  cflags.unshift('-Os')
+  cflags.unshift('-O2')
 end
 
 libhydrogen_dir = File.join(__dir__, '..', '..', 'vendor', 'libhydrogen')

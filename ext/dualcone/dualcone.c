@@ -2,7 +2,8 @@
 
 VALUE rb_mDualcone;
 
-void rb_dualcone_cleanup(DualconeContext *ctx) {
+static void
+rb_dualcone_cleanup(DualconeContext *ctx) {
   if (ctx->input_path != NULL) {
     free(ctx->input_path);
   }
@@ -31,7 +32,8 @@ void rb_dualcone_cleanup(DualconeContext *ctx) {
   hydro_memzero(ctx, sizeof(DualconeContext));
 }
 
-void rb_dualcone_get_key(DualconeContext *ctx) {
+static void
+rb_dualcone_get_key(DualconeContext *ctx) {
   int result = 0;
   int errno_sv = 0;
 
