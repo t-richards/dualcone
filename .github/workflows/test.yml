@@ -5,11 +5,12 @@ jobs:
   test:
     if: "!contains(github.event.commits[0].message, '[ci skip]')"
     name: Ruby ${{ matrix.ruby-version }}
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     env:
       PARALLEL_PROCESSOR_COUNT: 2
     strategy:
       matrix:
+        os: ['macos-latest', 'ubuntu-latest']
         ruby-version: ['2.7', '3.0', '3.1', '3.2']
     steps:
       - name: Checkout source
