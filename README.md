@@ -8,20 +8,6 @@ Dualcone is a self-contained gem. It brings along its own copy of the lightweigh
 
 Dualcone supports GNU + Linux and other Unix-like operating systems. Windows is not supported.
 
-## Roadmap
-
-### Part 1
- - [x] Key generation: `Dualcone.generate_key`
- - [x] Encrypted code running: `Dualcone.run(code)`
- - [x] Encrypted code generation: `Dualcone.encrypt(path)`
- - [x] Specs passing
-
-### Part 2
- - [x] Runnable trivial ruby script
- - [ ] Runnable non-trivial ruby script
- - [ ] Runnable sinatra app
- - [ ] Runnable rails app
-
 ## Installation
 
 Add this gem to your application's Gemfile:
@@ -102,6 +88,13 @@ You need to have a C compiler and `make` installed on your system to be able to 
 You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bin/rake install`. To release a new version, update the version number in `version.rb`, and then run `bin/rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org][rubygems].
+
+## Roadmap
+
+ - [x] Runnable trivial ruby script
+ - [ ] Runnable non-trivial ruby script
+ - [ ] Runnable sinatra app
+ - [ ] Runnable rails app
 
 ## Contributing
 
