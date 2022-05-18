@@ -93,7 +93,7 @@ RSpec.describe Dualcone do
           described_class.run(code)
         end
 
-        expect(TEST_SUCCESS).to eq(true)
+        expect(TEST_SUCCESS).to be(true)
       end
     end
 
@@ -132,7 +132,7 @@ RSpec.describe Dualcone do
         ClimateControl.modify DUALCONE_HEX_KEY: key do
           result = described_class.encrypt(file.path)
 
-          expect(result).to eq(nil)
+          expect(result).to be_nil
         end
       end
 

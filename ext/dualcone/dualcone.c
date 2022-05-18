@@ -55,12 +55,17 @@ rb_dualcone_get_key(DualconeContext *ctx) {
 
 /*
  * call-seq:
- *   Dualcone.run(path) -> nil
+ *   Dualcone.run(code) -> nil
  *
- * Runs the encrypted file specified by +path+.
+ * Executes the encrypted +code+.
  *
  * If successful, this method returns nil.
  * Otherwise, it raises a fatal error.
+ *
+ *   ENV['DUALCONE_HEX_KEY'] = '7240adfda679de86902864bc4e05864fda6e06cd24256885e0cda1ac02d03dd8'
+ *   Dualcone.run('d4d745de7437d7d66fb78b5d16b41de0eb716d26b282226e3e3d5b826f4704cc0e19d1fee990d059c198')
+ *   "a"
+ *   => nil
  */
 static VALUE
 rb_dualcone_run(VALUE _self, VALUE code) {
@@ -134,6 +139,9 @@ rb_dualcone_run(VALUE _self, VALUE code) {
  *   Dualcone.generate_key -> string
  *
  * Returns a new secret encryption key in hex-encoded format.
+ *
+ *   Dualcone.generate_key
+ *   => "7240adfda679de86902864bc4e05864fda6e06cd24256885e0cda1ac02d03dd8"
  */
 static VALUE
 rb_dualcone_generate_key(VALUE _self) {
@@ -154,10 +162,13 @@ rb_dualcone_generate_key(VALUE _self) {
  * call-seq:
  *   Dualcone.encrypt(path) -> nil
  *
- * Encrypts (and overwrites!) the file specified by +path+.
+ * Encrypts (and overwrites!) the Ruby code file specified by +path+.
  *
  * If successful, this method returns nil.
  * Otherwise, it raises a fatal error.
+ *
+ *   Dualcone.encrypt('hello.rb')
+ *   => nil
  */
 static VALUE
 rb_dualcone_encrypt(VALUE _self, VALUE path) {
