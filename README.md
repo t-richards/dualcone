@@ -1,6 +1,6 @@
 # Dualcone
 
-[![CircleCI](https://circleci.com/gh/t-richards/dualcone.svg?style=svg)](https://circleci.com/gh/t-richards/dualcone)
+![Test](https://github.com/t-richards/dualcone/actions/workflows/test.yml/badge.svg)
 
 Dualcone is a Ruby source code protection system. Dualcone uses symmetric encryption to protect your source code.
 
