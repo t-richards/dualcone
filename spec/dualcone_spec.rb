@@ -107,7 +107,8 @@ RSpec.describe Dualcone do
       64.times do |i|
         it "successfully evaluates the code (try #{i})" do
           ClimateControl.modify DUALCONE_HEX_KEY: key do
-            described_class.run(other_code)
+            result = described_class.run(other_code)
+            expect(result).to be_nil
           end
         end
       end
